@@ -1,0 +1,45 @@
+
+1.Introduction:
+
+The city of Toronto is very diverse and is the the financial capitals of Canada. A person has a Job offer from the Borough, Downtown Toronto, Toronto but he doesn't have any idea about this city. As the job offer is very lucrative, he doesn't want to loose this opportunity and therefore he has to make a decision to shift to these city and to settle down in future. But before taking any decision he wants to explore the neighborhoods of these city so that he can make an informed decision and what this city has to offer to him who is contemplating to make a choice on seeking a life in this city.
+The deciding factor for most would be on how lively,diverse, supportive, vibrant and unique each of the neighborhood can be when compared to each other. The business problem in this study assumes that people who would be interested in this study are those who would like to create a projection of potential life and activities in these neighborhoods if the subject moves to live in one of them. The decision to choose one over the other would depend on the diverse and the uniqueness in the neighborhoods in each of these cities.
+
+2.Data Description:
+
+For any "Data Science Project" data is of paramount importance.For our study we need data about neighborhoods in the city.The neighborhood data of the city of Toronto is not readily available on the internet. But, a Wikipedia page exists that has all the information we need, to explore and cluster the neighborhoods. so we have to scrape the Wikipedia page and wrangle the data, clean it, to be converted into a structured format so that it can be read into a pandas dataframe.The link of the wikipedia page is https://en.wikipedia.org/wiki/List_of_postal_codes_of_Canada:_M. We can then use the geopy library or a readily available csv file which contains the coordinates of the postal codes to get the latitude and longitude values of boroughs of Toronto. We can then create a map of Toronto with neighborhoods superimposed on top by using the Visualization library Folium. Now we can finally focus our attention to the borough Downtown toronto and can explore further the neighborhood that the city has to offer. We can use Foursquare API's by using our credentials to get the categories or venues of each neighborhood within a particular radius of say 5oomts and can find the top 10 most common venues from these neighborhoods which will help us to know the most common venues from these neighborhoods.
+
+Now after finding the most common venue from DowntownToronto, Toronto we can compare the neighborhoods and based on the preferences of an individual, one can decide which neighborhood to move in. 
+
+3.Methodology:
+
+After getting the dataframe of the neighborhoods which includes Borough, Neighorhoods, Latitude and Longitude, it has to be clustered and explored. Since we are focussing on the boroughs Downtown Toronto from Canada, we sliced the original dataframe and created a new dataframe containing the neighborhoods of the boroughs we wanted. Using Foursquare API's found out the latitude and longitude of the borough and then for the each neighnorhoods. All the neigborhoods of the boroughs has been plotted in a map using the Folium data visualization library.
+
+Now the limit of the venues of each neighborhood is set to 100 and the radius to which the venues has to be searched is set to 500mts to which the Foursquare API's would be used. A new Dataframe which contains all the neighbourhoods of Downtown Toronto along with the Venue categories are created which gives us 206 unique venue categories. Now after analysing each neighborhoods we use one hot encoding method (pd.get_dummies) to segregate each venue category and taking the mean to get the frequency of occurence of each category. Now the venues are being sorted in the decending order of the frequency of their occuring and we create new dataframes which contains the neighborhoods along with the top ten most common venue for each of the neighborhoods of Downtown Toronto.
+
+Machine Learning Techniques:
+Now to see which of the neighborhoods of Downtown Toronto are similar/dissimilar, based on their top ten most common venues we use Machine Learning techniques. We use K-means Clustering Method and set our K value to 5. We get the labels of each of the neighborhoods and all the neighborhoods within the same cluster or labels are being plotted in a map using the Folium Library. After we are done with all this we examine our clusters for each labels of the top ten most common venue for Downtown Toronto.
+
+4.Results
+
+For Downtown Toronto Clusters:
+Label 0: Very few neighborhoods fall to this cluster. The neighborhoods belonging to this cluster are popular for having coffee shops,restaurants, Cafes, park and pub.
+Label 1: Very few neighborhoods fall to this cluster. The neighborhoods belonging to this cluster are popular for having park, playground, yoga studio, dance studio etc.
+Label 2: There are many neighborhoods which fall to this cluster. The neighborhoods belonging to this cluster are popular for having coffee shops,cafe's, Different cuisine restaurants(American,Italian,Japanese etc), Bar, pub etc
+Label 3: Very few neighborhoods fall to this cluster. The neighborhoods belonging to this cluster are popular for having Airport Lounge, Airport Service,Airport Terminal, Boat Ferry, Rental car location etc.
+Label 4: Very few neighborhoods fall to this cluster. The neighborhoods belonging to this cluster are popular for having Grocery store, candy store, baby store, park,restaurant, Athletic&Sports, cafe.
+
+5. Discussion:
+
+We see that neighborhoods of Label2 has a lot of foreign cuisine restaurants. So a person prefering various cuisines can prefer to stay in these neigborhoods of Downtown Toronto.
+Also, neighborhoods of Label1 Downtown toronto provides for some recreational places such as Gyms, Parks, yoga studio, dance studio etc , so a person interested in all these activities can prefer to stay in these neighborhoods.
+Also by looking at the venues of Label3 of Downtown Toronto it seems like it is nearby airport, so a person who is a frequent traveller can choose to stay in this neighborhood of the city. 
+
+6. Conclusion:
+
+In this project, we have attempted to load the dataset for one of the boroughs of Toronto namely Downtown Toronto and have tried to analyze the neighborhood regions in these city based on the type of popular and top venues they have. We have clustered the neighborhoods based on the most common top venues in each of the neighborhood. Our intention with this project was to analyze and understand the difference in the venues of the neighborhoods in this city, which can offer decision points for anybody who is considering to settle there and can get a peek into what type of experience and facilities he/she will be provided with.
+
+7.References:
+
+ Notebook created by Alex Aklson and Polong Lin for the ‘Applied Data Science Capstone’ course on Coursera
+ 
+8.Github link : https://github.com/sangeet1509/Coursera_Capstone/blob/master/Capstone_Assignment_Week3.ipynb
